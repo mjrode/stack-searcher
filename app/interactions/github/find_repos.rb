@@ -6,9 +6,8 @@ class Github::FindRepos < Less::Interaction
   def run
     @repos = []
     page_count
-    paginate_through_repos(build_params)
+    paginate_through_repos(build_params.compact)
     @repos
-    binding.pry
   end
 
   private
@@ -24,14 +23,11 @@ class Github::FindRepos < Less::Interaction
   end
 
   def build_params
-    params = {
+    {
       libraries: libraries,
       file_name: file_name,
       language:  language,
-      sort:      sort
     }
-    params.compact!
-    params
   end
 
   def repo_request(params)

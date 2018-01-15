@@ -5,12 +5,6 @@ class GithubClient < ActiveSupport::TestCase
   def setup
   end
 
-  test "raises param not provided error" do
-    assert_raises Less::MissingParameterError do
-      response = Common::GithubClient.run
-    end
-  end
-
   test "basic request returns valid response" do
     use_cassette("basic_request") do
       response = Common::GithubClient.run(
@@ -19,9 +13,20 @@ class GithubClient < ActiveSupport::TestCase
       )
 
       assert response.success?
-      assert_equal response.parsed_response['total_count'], 5945
+      assert_equal response.parsed_response['total_count'], 5855
       assert_equal response.parsed_response['items'].count, 100
     end
   end
+
+  test "return repository info" do
+  use_cassette("repo_api_request") do
+    response = Common::GithubClient.run(api_url: 'https://api.github.com/repos/hakanensari/fixer')
+
+    assert response.success?
+    assert_equal response.parsed_response["watchers_count"], 1933
+    assert_equal response.parsed_response["stargazers_count"], 1933
+    assert_equal response.parsed_response["url"], "https://api.github.com/repos/hakanensari/fixer"
+  end
+end
 
 end

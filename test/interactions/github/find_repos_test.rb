@@ -10,11 +10,9 @@ class FindRepo < ActiveSupport::TestCase
     use_cassette("pagination_request") do
       response = Github::FindRepos.run(
         file_name: 'Gemfile.lock',
-        libraries: ['vcr', 'minitest'],
+        libraries: ['vcr', 'minitest', 'less_interactions'],
         language: 'Ruby'
       )
-
-    binding.pry
     end
   end
 
