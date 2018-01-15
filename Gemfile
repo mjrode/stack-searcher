@@ -16,6 +16,13 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.5'
+gem "github_api"
+gem 'less_interactions'
+gem 'haml-rails'
+gem 'foundation-rails'
+gem 'httparty'
+
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'

@@ -1,0 +1,7 @@
+.row
+  .large-12.columns
+    .row.collapse.prefix-round
+      = form_tag("/search", method: "get") do
+        = label_tag(:q, "Search for:")
+        = text_field_tag(:q)
+        .button.postfix= submit_tag("Search")

@@ -2,4 +2,7 @@ class PagesController < ApplicationController
   def home
     @first_quote_id = Quote.first.id
   end
+
+  def search
+  end
 end
