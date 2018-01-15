@@ -22,6 +22,7 @@ gem 'haml-rails'
 gem 'foundation-rails'
 gem 'httparty'
 gem 'minitest'
+gem "octokit", "~> 4.0"
 
 
 group :development, :test do

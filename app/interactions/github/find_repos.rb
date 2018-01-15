@@ -1,8 +1,7 @@
 class Github::FindRepos < Less::Interaction
-  expects :libraries, allow_nil: true
-  expects :file_name, allow_nil: true
-  expects :language, allow_nil: true
-  expects :sort, allow_nil: true
+  expects :libraries # An Array
+  expects :file_name # Gemfile.lock
+  expects :language,  allow_nil: true
 
   def run
     @repos = []
@@ -43,13 +42,25 @@ class Github::FindRepos < Less::Interaction
     repos.each do |repo|
        repo_hash = {}
        repo_hash['external_id'] = repo['repository']['id']
-       repo_hash['login'] = repo['repository']['login']
        repo_hash['name'] = repo['repository']['name']
        repo_hash['html_url'] = repo['repository']['html_url']
        repo_hash['api_url'] = repo['repository']['url']
        repo_hash['score'] = repo['score']
+       get_repo_details(repo_hash['api_url'], repo_hash)
+       puts repo_hash
        @repos << repo_hash
     end
+  end
+
+  def get_repo_details(api_url, repo_hash)
+    sleep 1.7
+    response              = repo_request(api_url: api_url)
+    repo_hash['stars']    = response["stargazers_count"]
+    repo_hash['watchers'] = response["watchers_count"]
+    repo_hash['forks']    = response["forks"]
+    repo_hash['language'] = response["language"]
+    puts response.headers["x-ratelimit-remaining"]
+    repo_hash
   end
 
   def page_count

@@ -19,23 +19,9 @@ class GithubClient < ActiveSupport::TestCase
       )
 
       assert response.success?
-      assert_equal response.parsed_response['total_count'], 5912
+      assert_equal response.parsed_response['total_count'], 5945
       assert_equal response.parsed_response['items'].count, 100
     end
   end
 
-  test "adding timeout limits request time" do
-    use_cassette("basic_request") do
-      response = Common::GithubClient.run(
-        file_name: 'Gemfile.lock',
-        libraries: ['vcr', 'minitest'],
-        timeout: 2.5,
-        next_page: 9
-      )
-
-      assert response.success?
-      assert_equal response.parsed_response['total_count'], 5912
-      assert_equal response.parsed_response['items'].count, 100
-    end
-  end
 end

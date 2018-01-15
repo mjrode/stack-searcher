@@ -6,14 +6,15 @@ class FindRepo < ActiveSupport::TestCase
   end
 
 
-  test "gets total page count" do
-    use_cassette("page_count_request") do
+  test "retuns a hash of all repos matching the search terms" do
+    use_cassette("pagination_request") do
       response = Github::FindRepos.run(
         file_name: 'Gemfile.lock',
-        libraries: ['vcr', 'minitest']
+        libraries: ['vcr', 'minitest'],
+        language: 'Ruby'
       )
 
-      assert_equal response, 59
+    binding.pry
     end
   end
 
