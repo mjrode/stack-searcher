@@ -21,6 +21,7 @@ gem 'less_interactions'
 gem 'haml-rails'
 gem 'foundation-rails'
 gem 'httparty'
+gem 'minitest'
 
 
 group :development, :test do
@@ -29,6 +30,8 @@ group :development, :test do
   gem 'vcr'
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'webmock'
+  gem 'mocha'
 end
 
 group :development do
