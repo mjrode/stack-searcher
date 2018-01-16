@@ -61,7 +61,6 @@ class PaginationTest < ActiveSupport::TestCase
       libraries: ['vcr', 'minitest'],
       search_type: :code
     )
-    binding.pry
 
     use_cassette 'code request that returns multiple pages' do
       response = Common::GithubClient.run(url: url)
