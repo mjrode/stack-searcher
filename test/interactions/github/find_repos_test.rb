@@ -5,14 +5,23 @@ class FindRepo < ActiveSupport::TestCase
   def setup
   end
 
-
-  test "retuns a hash of all repos matching the search terms" do
-    use_cassette("pagination_request") do
+  test "if still valid repos if under 100 items are returned" do
+    use_cassette('search with under 100 items') do
       response = Github::FindRepos.run(
-        file_name: 'Gemfile.lock',
-        libraries: ['vcr', 'minitest', 'less_interactions'],
-        language: 'Ruby'
+        file_name:"Gemfile.lock",
+        libraries: ["vcr", "octokit", "pg", "font-awesome-rails"]
       )
+
+      assert_equal response.count, 28
+      
+      repo = response.first
+      assert_equal repo['external_id'], 21468732
+      assert_equal repo['html_url'], 'https://github.com/johnkeith/GitCard'
+      assert_equal repo['api_url'], 'https://api.github.com/repos/johnkeith/GitCard'
+      assert_equal repo['score'], 6.8235793
+      assert_equal repo['login'], 'johnkeith'
+      assert_equal repo['language'], "Ruby"
+
     end
   end
 

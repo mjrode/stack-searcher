@@ -19,6 +19,7 @@ gem 'jbuilder', '~> 2.5'
 gem "github_api"
 gem 'less_interactions'
 gem 'haml-rails'
+gem 'annotate'
 gem 'foundation-rails'
 gem 'httparty'
 gem 'minitest'
@@ -33,6 +34,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'webmock'
   gem 'mocha'
+  gem 'factory_bot_rails'
 end
 
 group :development do

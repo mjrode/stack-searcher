@@ -1,3 +1,4 @@
+#https://github.com/search?utf8=%E2%9C%93&q=rgeyer-rs-cookbooks%2Fcookbooks_all+in%3Aname+OR+ase-lab%2FPublisher+in%3Aname&type=Repositories
 class Github::FindRepos < Less::Interaction
   expects :libraries # An Array
   expects :file_name # Gemfile.lock
@@ -6,11 +7,15 @@ class Github::FindRepos < Less::Interaction
   def run
     @repos = []
     page_count
-    paginate_through_repos(build_params.compact)
-    @repos
+    paginate_through_repos(build_params)
+    save_repos
   end
 
   private
+
+  def save_repos
+    @repos.each {|repo| Github::SaveRepos.run(repo_hash: repo)}
+  end
 
   def paginate_through_repos(params)
     page_range.each do |page|
@@ -18,7 +23,6 @@ class Github::FindRepos < Less::Interaction
       repo_response = repo_request(params)
       repos = repo_response.parsed_response['items']
       build_repo_hash(repos)
-      break unless repo_response.headers['link'].include?('next')
     end
   end
 
@@ -27,7 +31,7 @@ class Github::FindRepos < Less::Interaction
       libraries: libraries,
       file_name: file_name,
       language:  language,
-    }
+    }.compact
   end
 
   def repo_request(params)
@@ -38,18 +42,17 @@ class Github::FindRepos < Less::Interaction
     repos.each do |repo|
        repo_hash = {}
        repo_hash['external_id'] = repo['repository']['id']
-       repo_hash['name'] = repo['repository']['name']
-       repo_hash['html_url'] = repo['repository']['html_url']
-       repo_hash['api_url'] = repo['repository']['url']
-       repo_hash['score'] = repo['score']
-       get_repo_details(repo_hash['api_url'], repo_hash)
-       puts repo_hash
+       repo_hash['name']        = repo['repository']['name']
+       repo_hash['html_url']    = repo['repository']['html_url']
+       repo_hash['api_url']     = repo['repository']['url']
+       repo_hash['score']       = repo['score']
+       repo_hash['login']       = repo["repository"]['owner']['login']
+       get_additional_repo_details(repo_hash['api_url'], repo_hash)
        @repos << repo_hash
     end
   end
 
-  def get_repo_details(api_url, repo_hash)
-    sleep 1.7
+  def get_additional_repo_details(api_url, repo_hash)
     response              = repo_request(api_url: api_url)
     repo_hash['stars']    = response["stargazers_count"]
     repo_hash['watchers'] = response["watchers_count"]
@@ -60,14 +63,16 @@ class Github::FindRepos < Less::Interaction
   end
 
   def page_count
-    params = {file_name: file_name,
-              libraries: libraries}
+    params = build_params
 
-    (repo_request(params).parsed_response['total_count'].to_i / 100)
+    item_count = repo_request(params).parsed_response['total_count'].to_i
+    puts item_count
+    @page_count = item_count / Common::GithubClient::ITEMS_PER_PAGE
   end
 
   def page_range
-    count = page_count
+    count = @page_count || page_count
+    count = count < 1 ? 1 : count
     (1..count)
   end
 end
