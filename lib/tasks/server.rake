@@ -3,5 +3,4 @@ namespace :server do
   task start: :environment do
     sh 'foreman start -f Procfile.dev -p 3000'
   end
-
 end

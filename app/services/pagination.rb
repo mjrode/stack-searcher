@@ -5,6 +5,10 @@ class Pagination
     @headers = OpenStruct.new(response.headers)
   end
 
+  def request_next_page?
+    more_pages? ? true : false
+  end
+
   def more_pages?
     link = @headers.link
     next_link = link.first.include?('next') if link

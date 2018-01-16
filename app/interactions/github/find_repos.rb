@@ -1,8 +1,6 @@
 #https://github.com/search?utf8=%E2%9C%93&q=rgeyer-rs-cookbooks%2Fcookbooks_all+in%3Aname+OR+ase-lab%2FPublisher+in%3Aname&type=Repositories
 class Github::FindRepos < Less::Interaction
-  expects :libraries # An Array
-  expects :file_name # Gemfile.lock
-  expects :language,  allow_nil: true
+  
 
   def run
     @repos = []

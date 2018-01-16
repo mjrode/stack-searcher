@@ -21,7 +21,6 @@ class PaginationTest < ActiveSupport::TestCase
   # test 'returns next page url when present' do
   #   response = multiple_page_request
   #   pagination = Pagination.new(response)
-  #   binding.pry
   # end
 
   test 'returns true when there are links present in the headers' do
@@ -34,7 +33,7 @@ class PaginationTest < ActiveSupport::TestCase
     response = multiple_page_request
     pagination = Pagination.new(response)
     url = pagination.next_page_url
-    assert_equal url, 'https://api.github.com/search/code?q=vcr+minitest+filename%3AGemfile.lock&page=2&per_page=100'
+    assert_equal url, "https://api.github.com/search/code?q=vcr+minitest+filename%3AGemfile.lock&per_page=100&page=2"
   end
 
   test 'see which urls are present in headers'  do
@@ -48,31 +47,43 @@ class PaginationTest < ActiveSupport::TestCase
     assert_equal url_hash[:first_available], false
   end
 
+  test 'return true when the next page should be requested' do
+    response = multiple_page_request
+    pagination = Pagination.new(response)
+    pagination.request_next_page?
+  end
+
   private
 
   def last_page_request
     use_cassette 'code request that returns last page' do
       response = Common::GithubClient.run(
-        api_url: "https://api.github.com/search/code?q=vcr+minitest+filename%3AGemfile.lock&page=10&per_page=100"
+        url: "https://api.github.com/search/code?q=vcr+minitest+filename%3AGemfile.lock&page=10&per_page=100"
       )
     end
   end
 
   def multiple_page_request
+    url = Github::ComposeUrl.run(
+      file_name: 'Gemfile.lock',
+      libraries: ['vcr', 'minitest']
+    )
+
     use_cassette 'code request that returns multiple pages' do
-      response = Common::GithubClient.run(
-        file_name: 'Gemfile.lock',
-        libraries: ['vcr', 'minitest']
-      )
+      response = Common::GithubClient.run(url: url)
     end
+
   end
 
   def single_page_request
+    url = Github::ComposeUrl.run(
+      file_name: 'Gemfile.lock',
+      libraries: ['vcr', 'minitest', 'less_interactions']
+    )
+    url
+
     use_cassette 'code request that returns one page' do
-      response = Common::GithubClient.run(
-        file_name: 'Gemfile.lock',
-        libraries: ['vcr', 'minitest', 'less_interactions']
-      )
+      response = Common::GithubClient.run(url: url)
     end
   end
 end
