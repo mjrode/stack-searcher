@@ -8,7 +8,8 @@ class GithubClient < ActiveSupport::TestCase
   test "basic code request returns valid response" do
     url = Github::ComposeUrl.run(
       file_name: 'Gemfile.lock',
-      libraries: ['vcr', 'minitest', 'less_interactions']
+      libraries: ['vcr', 'minitest', 'less_interactions'],
+      search_type: :code
     )
     use_cassette("basic_request") do
       response = Common::GithubClient.run(url: url)

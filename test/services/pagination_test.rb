@@ -2,9 +2,6 @@ require 'test_helper'
 require 'pry'
 
 class PaginationTest < ActiveSupport::TestCase
-  def setup
-
-  end
 
   test 'returns true if there are more pages' do
     response = multiple_page_request
@@ -17,11 +14,6 @@ class PaginationTest < ActiveSupport::TestCase
     pagination = Pagination.new(response)
     assert_equal pagination.more_pages?, false
   end
-
-  # test 'returns next page url when present' do
-  #   response = multiple_page_request
-  #   pagination = Pagination.new(response)
-  # end
 
   test 'returns true when there are links present in the headers' do
     response = last_page_request
@@ -66,8 +58,10 @@ class PaginationTest < ActiveSupport::TestCase
   def multiple_page_request
     url = Github::ComposeUrl.run(
       file_name: 'Gemfile.lock',
-      libraries: ['vcr', 'minitest']
+      libraries: ['vcr', 'minitest'],
+      search_type: :code
     )
+    binding.pry
 
     use_cassette 'code request that returns multiple pages' do
       response = Common::GithubClient.run(url: url)
@@ -78,7 +72,8 @@ class PaginationTest < ActiveSupport::TestCase
   def single_page_request
     url = Github::ComposeUrl.run(
       file_name: 'Gemfile.lock',
-      libraries: ['vcr', 'minitest', 'less_interactions']
+      libraries: ['vcr', 'minitest', 'less_interactions'],
+      search_type: :code
     )
     url
 

@@ -1,8 +1,5 @@
 class Github::FetchRepoNames < Less::Interaction
-
   expects :url
-
-  # url: https://api.github.com/search/code?q=github_api+vcr+filename%3AGemfile.lock&per_page=10
 
   def run
     @repo_names = []
