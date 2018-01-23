@@ -11,14 +11,14 @@ class FetchRepoNamesTest < ActiveSupport::TestCase
   test "returns 120 valid repo names" do
     use_cassette 'first code search request' do
       response = Github::FetchRepoNames.run(url: @url_1)
-      assert_equal response.count, 20
+      assert_equal response.count, 120
     end
   end
 
   test "returns 120 valid repo names with diff page size" do
     use_cassette 'second code search request' do
       response = Github::FetchRepoNames.run(url: @url_2)
-      assert_equal response.count, 100
+      assert_equal response.count, 120
     end
   end
 

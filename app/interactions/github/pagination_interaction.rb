@@ -5,7 +5,7 @@ class Github::PaginationInteraction < Less::Interaction
   def run
     @response = response
     @headers = OpenStruct.new(response.headers)
-    next_page_url = request_next_page? ? next_page_url : nil
+    page_url = request_next_page? ? next_page_url : nil
   end
 
   def request_next_page?

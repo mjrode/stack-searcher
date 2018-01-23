@@ -26,7 +26,7 @@ class Common::GithubClient < Less::Interaction
   end
 
   def auth
-    {username: 'mjrode', password: 'Rose44bud'}
+    {username: Rails.application.secrets.GITHUB_USER_NAME, password: Rails.application.secrets.GITHUB_PASSWORD}
   end
 
 end
