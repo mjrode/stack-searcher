@@ -5,6 +5,8 @@ class Github::ComposeUrl < Less::Interaction
   expects :repo_names, allow_nil: true
   expects :search_type, allow_nil: true
 
+  ITEMS_PER_PAGE = 100
+
   def run
     compose_url
   end
@@ -36,7 +38,7 @@ class Github::ComposeUrl < Less::Interaction
     base_url = '/search/code?q='
     base_url += format_libraries(libraries) if libraries
     base_url += "+filename%3A#{file_name}"
-    base_url += "&per_page=#{Common::GithubClient::ITEMS_PER_PAGE}"
+    base_url += "&per_page=#{ITEMS_PER_PAGE}"
     base_url
   end
 

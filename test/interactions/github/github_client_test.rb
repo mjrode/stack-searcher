@@ -14,8 +14,8 @@ class GithubClient < ActiveSupport::TestCase
     use_cassette("basic_request") do
       response = Common::GithubClient.run(url: url)
       assert response.success?
-      assert_equal response.parsed_response['total_count'], 3
-      assert_equal response.parsed_response['items'].count, 3
+      assert_equal response.parsed_response['total_count'], 4
+      assert_equal response.parsed_response['items'].count, 4
     end
   end
 
@@ -24,8 +24,8 @@ class GithubClient < ActiveSupport::TestCase
       response = Common::GithubClient.run(url: 'https://api.github.com/repos/hakanensari/fixer')
 
       assert response.success?
-      assert_equal response.parsed_response["watchers_count"], 1935
-      assert_equal response.parsed_response["stargazers_count"], 1935
+      assert_equal response.parsed_response["watchers_count"], 1973
+      assert_equal response.parsed_response["stargazers_count"], 1973
       assert_equal response.parsed_response["url"], "https://api.github.com/repos/hakanensari/fixer"
       assert_equal response.parsed_response['owner']['login'], 'hakanensari'
     end
