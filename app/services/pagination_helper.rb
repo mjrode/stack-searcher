@@ -1,4 +1,4 @@
-class Pagination
+class PaginationHelper
 
   def initialize(response)
     @response = response

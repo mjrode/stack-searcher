@@ -27,7 +27,7 @@ class Github::FetchRepoNames < Less::Interaction
   end
 
   def paginate(response)
-    next_page = Github::Pagination.run(response: response)
+    next_page = Github::PaginationInteraction.run(response: response)
     if next_page
       @url = next_page
       search_code

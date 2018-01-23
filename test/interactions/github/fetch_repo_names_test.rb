@@ -11,22 +11,22 @@ class FetchRepoNamesTest < ActiveSupport::TestCase
   test "returns 120 valid repo names" do
     use_cassette 'first code search request' do
       response = Github::FetchRepoNames.run(url: @url_1)
-      assert_equal response.count, 120
+      assert_equal response.count, 20
     end
   end
 
   test "returns 120 valid repo names with diff page size" do
     use_cassette 'second code search request' do
       response = Github::FetchRepoNames.run(url: @url_2)
-      assert_equal response.count, 120
+      assert_equal response.count, 100
     end
   end
 
   test "returns valid repo names with only one page" do
     use_cassette 'third code search request' do
       response = Github::FetchRepoNames.run(url: @url_3)
-      assert_equal response.count, 3
-      assert_equal response, ["mjrode/workhard", "mjrode/check_the_lines", "mjrode/TwitterLists"]
+      assert_equal response.count, 4
+      assert_equal response, ["mjrode/stack-searcher", "mjrode/workhard", "mjrode/check_the_lines", "mjrode/TwitterLists"]
     end
   end
 

@@ -2,17 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ede9125c-d765-4845-96d4-73147523d4f3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/interactions/github/github_client.rb" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/cassettes/code_request_that_returns_last_page.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/cassettes/first_code_search_request.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/cassettes/second_code_search_request.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/cassettes/third_code_search_request.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/interactions/github/github_client.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/interactions/github/pagination.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/services/pagination_test.rb" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/interactions/github/compose_url.rb" afterPath="$PROJECT_DIR$/app/interactions/github/compose_url.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/interactions/common/github_client.rb" afterPath="$PROJECT_DIR$/app/interactions/common/github_client.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/interactions/github/fetch_repo_names.rb" afterPath="$PROJECT_DIR$/app/interactions/github/fetch_repo_names.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/services/pagination.rb" afterPath="$PROJECT_DIR$/app/services/pagination.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/secrets.yml" afterPath="$PROJECT_DIR$/config/secrets.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/cassettes/basic_request.yml" afterPath="$PROJECT_DIR$/test/cassettes/basic_request.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/cassettes/code_request_that_returns_last_page.yml" afterPath="$PROJECT_DIR$/test/cassettes/code_request_that_returns_last_page.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/cassettes/code_request_that_returns_multiple_pages.yml" afterPath="$PROJECT_DIR$/test/cassettes/code_request_that_returns_multiple_pages.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/cassettes/code_request_that_returns_one_page.yml" afterPath="$PROJECT_DIR$/test/cassettes/code_request_that_returns_one_page.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/cassettes/first_code_search_request.yml" afterPath="$PROJECT_DIR$/test/cassettes/first_code_search_request.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/cassettes/repo_api_request.yml" afterPath="$PROJECT_DIR$/test/cassettes/repo_api_request.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/cassettes/second_code_search_request.yml" afterPath="$PROJECT_DIR$/test/cassettes/second_code_search_request.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/cassettes/third_code_search_request.yml" afterPath="$PROJECT_DIR$/test/cassettes/third_code_search_request.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/interactions/github/github_client_test.rb" afterPath="$PROJECT_DIR$/test/interactions/github/github_client_test.rb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -38,17 +44,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="github_client.rb" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/interactions/github/github_client.rb">
+      <file leaf-file-name="find_repos.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/interactions/github/find_repos.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fetch_repo_names.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/interactions/github/fetch_repo_names.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="46" lean-forward="true" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>pagin</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -58,6 +79,7 @@
       <list>
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/test/interactions/github/github_client_test.rb" />
+        <option value="$PROJECT_DIR$/app/interactions/github/fetch_repo_names.rb" />
       </list>
     </option>
   </component>
@@ -98,6 +120,24 @@
             <path>
               <item name="stack-searcher" type="b2602c69:ProjectViewProjectNode" />
               <item name="stack-searcher" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="stack-searcher" type="b2602c69:ProjectViewProjectNode" />
+              <item name="stack-searcher" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="stack-searcher" type="b2602c69:ProjectViewProjectNode" />
+              <item name="stack-searcher" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="interactions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="stack-searcher" type="b2602c69:ProjectViewProjectNode" />
+              <item name="stack-searcher" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="interactions" type="462c0819:PsiDirectoryNode" />
+              <item name="github" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="stack-searcher" type="b2602c69:ProjectViewProjectNode" />
@@ -279,7 +319,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2140000" />
+    <option name="totallyTimeSpent" value="3144000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="848" extended-state="0" />
@@ -454,14 +494,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/interactions/github/find_repos.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/rubystubs22/object.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="241">
@@ -491,6 +523,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/interactions/github/pagination.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="18" lean-forward="true" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/interactions/github/find_repos.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/interactions/github/fetch_repo_names.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="46" lean-forward="true" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
           <folding />
         </state>
       </provider>

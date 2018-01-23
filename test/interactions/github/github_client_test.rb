@@ -24,8 +24,8 @@ class GithubClient < ActiveSupport::TestCase
       response = Common::GithubClient.run(url: 'https://api.github.com/repos/hakanensari/fixer')
 
       assert response.success?
-      assert_equal response.parsed_response["watchers_count"], 1973
-      assert_equal response.parsed_response["stargazers_count"], 1973
+      assert_equal response.parsed_response["watchers_count"], 1974
+      assert_equal response.parsed_response["stargazers_count"], 1974
       assert_equal response.parsed_response["url"], "https://api.github.com/repos/hakanensari/fixer"
       assert_equal response.parsed_response['owner']['login'], 'hakanensari'
     end
