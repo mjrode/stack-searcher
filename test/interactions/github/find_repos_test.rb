@@ -5,25 +5,23 @@
 #   def setup
 #   end
 #
-#   test "if still valid repos if under 100 items are returned" do
-#     url = Github::ComposeUrl.run(
-#       file_name:"Gemfile.lock",
-#       libraries: ["vcr", "octokit", "pg", "font-awesome-rails"]
-#     )
+#   test "get 1_000 repo names with given libraries" do
+#     use_cassette 'search with under 100 items' do
+#       url = Github::ComposeUrl.run(
+#         file_name:"Gemfile.lock",
+#         libraries: ["vcr", "minitest"],
+#         search_type: :code
+#       )
 #
-#     use_cassette('search with under 100 items') do
+#       repos = Github::FetchRepoNames.run(url: url)
 #
-#       response = Github::FindRepos.run(url: url)
+#       url = Github::ComposeUrl.run(repo_names: repos, search_type: :repo)
 #
-#       assert_equal response.count, 28
+#       binding.pry
 #
-#       repo = response.first
-#       assert_equal repo['external_id'], 21468732
-#       assert_equal repo['html_url'], 'https://github.com/johnkeith/GitCard'
-#       assert_equal repo['api_url'], 'https://api.github.com/repos/johnkeith/GitCard'
-#       assert_equal repo['score'], 6.8234324
-#       assert_equal repo['login'], 'johnkeith'
-#       assert_equal repo['language'], "Ruby"
+#
+#       assert_equal response.count, 1_000
+#
 #
 #     end
 #   end
