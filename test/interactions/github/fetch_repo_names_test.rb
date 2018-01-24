@@ -23,7 +23,7 @@ class FetchRepoNamesTest < ActiveSupport::TestCase
   test "returns valid repo names for large request" do
     use_cassette 'third code search request' do
       response = Github::FetchRepoNames.run(file_name: 'Gemfile.lock', libraries: ['minitest', 'vcr'])
-      assert_equal response.count, 1100
+      assert_equal response.count, 1000
     end
   end
 end

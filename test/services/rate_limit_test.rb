@@ -10,7 +10,7 @@ class RateLimitTest < ActiveSupport::TestCase
   test 'get a valid response back when requesting rate limits' do
     use_cassette('rate_limit') do
       response = RateLimit.check_limits
-      assert_equal response, 'Core Remaining: 5000, resets in 3616.0 seconds | Search Remaining: 30, resets in 76.0'
+      assert_equal response, 'Core Remaining: 4997, resets in 3943.0 seconds | Search Remaining: 28, resets in 1026.0'
     end
   end
 end
