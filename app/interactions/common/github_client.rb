@@ -1,10 +1,12 @@
 class Common::GithubClient < Less::Interaction
+  # Make requests to Githubs api.
   expects :url
   include HTTParty
 
   ITEMS_PER_PAGE = 100
 
   base_uri 'https://api.github.com/'
+  # debug_output $stdout
 
   def run
     @response = make_request
@@ -29,7 +31,7 @@ class Common::GithubClient < Less::Interaction
   end
 
   def rate_limit
-    sleep 2 if @rate_limit < 10
+    sleep 2 # if @rate_limit < 10
   end
 
   def auth

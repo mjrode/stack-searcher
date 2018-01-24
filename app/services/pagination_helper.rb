@@ -1,4 +1,5 @@
 class PaginationHelper
+  # not used 
 
   def initialize(response)
     @response = response

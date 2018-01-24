@@ -1,9 +1,12 @@
 class Github::ComposeUrl < Less::Interaction
+  # Builds the url we use to make the Github API request.
+  # You can pass it a file_name ie: Gemfile, libraries ie: ['vcr', 'less_interactions']
+  # Or you can pass it a list of repo_names ie: ["mjrode/stack-searcher", "mjrode/workhard", "mjrode/check_the_lines", "mjrode/TwitterLists"]
+  # You must pass it the search type
   expects :file_name, allow_nil: true
   expects :libraries, allow_nil: true
   expects :language,  allow_nil: true
   expects :repo_names, allow_nil: true
-  expects :search_type, allow_nil: true
 
   ITEMS_PER_PAGE = 100
 
@@ -14,11 +17,10 @@ class Github::ComposeUrl < Less::Interaction
   private
 
   def compose_url
-    case search_type
-    when :code
-      build_code_search_url
-    when :repo
+    if repo_names
       build_repo_search
+    else
+      build_code_search_url
     end
   end
 
