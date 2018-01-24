@@ -24,21 +24,23 @@ class Common::GithubClient < Less::Interaction
     if @response.success?
       @response
     else
-      binding.pry
       raise StandardError, @response.response.inspect
     end
   end
 
   def rate_limit
-    # sleep 1 if @rate_limit < 10
-    # if only 2 remaining then wait
+    puts "Requests Remaining: #{limit_remaining}"
+    sleep_until_reset if (limit_remaining < 2)
+  end
+
+  def sleep_until_reset
+    reset_time = (Time.at(@response.headers["x-ratelimit-reset"].to_i)) - Time.now
+    puts "Rate limit, sleeping: #{reset_time}"
+    sleep reset_time if reset_time > 0
+  end
+
+  def limit_remaining
     limit = @response.headers["x-ratelimit-remaining"].to_i
-    puts "Requests Remaining: #{limit}"
-    if limit < 2
-      reset_time = (Time.at(@response.headers["x-ratelimit-reset"].to_i)) - Time.now
-      puts "Rate limit, sleeping: #{reset_time}"
-      sleep reset_time
-    end
   end
 
   def auth

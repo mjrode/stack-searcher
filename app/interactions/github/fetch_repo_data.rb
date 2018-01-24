@@ -16,6 +16,7 @@ class Github::FetchRepoData < Less::Interaction
     # Slice to respect 256 character limit
     repo_array.each_slice(5) do |repos|
       url = compose_url(repos)
+      next if url.length > 256
       response = Common::GithubClient.run(url: url)
       repos = response.parsed_response['items']
       repo_hash = build_repo_hash(repos)
