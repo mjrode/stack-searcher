@@ -1,29 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ede9125c-d765-4845-96d4-73147523d4f3" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/interactions/github/find_repos.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/cassettes/basic_request.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/cassettes/code_request_that_returns_last_page.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/cassettes/code_request_that_returns_multiple_pages.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/cassettes/code_request_that_returns_one_page.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/cassettes/first_code_search_request.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/cassettes/repo_api_request.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/cassettes/second_code_search_request.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/cassettes/third_code_search_request.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/interactions/github/find_repos_test.rb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/interactions/common/github_client.rb" afterPath="$PROJECT_DIR$/app/interactions/common/github_client.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/interactions/github/compose_url.rb" afterPath="$PROJECT_DIR$/app/interactions/github/compose_url.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/interactions/github/fetch_repo_names.rb" afterPath="$PROJECT_DIR$/app/interactions/github/fetch_repo_names.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/services/pagination_helper.rb" afterPath="$PROJECT_DIR$/app/services/pagination_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/services/rate_limit.rb" afterPath="$PROJECT_DIR$/app/services/rate_limit.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/interactions/github/compose_url_test.rb" afterPath="$PROJECT_DIR$/test/interactions/github/compose_url_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/interactions/github/fetch_repo_names_test.rb" afterPath="$PROJECT_DIR$/test/interactions/github/fetch_repo_names_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/interactions/github/github_client_test.rb" afterPath="$PROJECT_DIR$/test/interactions/github/github_client_test.rb" />
-    </list>
+    <list default="true" id="ede9125c-d765-4845-96d4-73147523d4f3" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
     <ignored path="$PROJECT_DIR$/public/system/" />
@@ -44,10 +22,10 @@
             <state relative-caret-position="120">
               <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
               <folding>
-                <marker date="1516769397270" expanded="true" signature="55:1083" ph=" ... end" />
-                <marker date="1516769397270" expanded="true" signature="152:279" ph="do ... end" />
-                <marker date="1516769397270" expanded="true" signature="886:1072" ph="do ... end" />
-                <marker date="1516769397270" expanded="true" signature="886:1078" ph="do ... end" />
+                <marker date="1516772998145" expanded="true" signature="55:1083" ph=" ... end" />
+                <marker date="1516772998145" expanded="true" signature="152:279" ph="do ... end" />
+                <marker date="1516772998145" expanded="true" signature="886:1072" ph="do ... end" />
+                <marker date="1516772998145" expanded="true" signature="886:1078" ph="do ... end" />
               </folding>
             </state>
           </provider>
@@ -104,7 +82,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="848" />
@@ -327,15 +305,15 @@
       <option name="presentableId" value="Default" />
       <updated>1515986775661</updated>
       <workItem from="1515986777209" duration="1279000" />
-      <workItem from="1516766559174" duration="619000" />
+      <workItem from="1516766559174" duration="789000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4203000" />
+    <option name="totallyTimeSpent" value="4373000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="848" extended-state="1" />
+    <frame x="0" y="23" width="1440" height="848" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2532189" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -374,10 +352,10 @@
         <state relative-caret-position="120">
           <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
           <folding>
-            <marker date="1516769397270" expanded="true" signature="55:1083" ph=" ... end" />
-            <marker date="1516769397270" expanded="true" signature="152:279" ph="do ... end" />
-            <marker date="1516769397270" expanded="true" signature="886:1072" ph="do ... end" />
-            <marker date="1516769397270" expanded="true" signature="886:1078" ph="do ... end" />
+            <marker date="1516772998145" expanded="true" signature="55:1083" ph=" ... end" />
+            <marker date="1516772998145" expanded="true" signature="152:279" ph="do ... end" />
+            <marker date="1516772998145" expanded="true" signature="886:1072" ph="do ... end" />
+            <marker date="1516772998145" expanded="true" signature="886:1078" ph="do ... end" />
           </folding>
         </state>
       </provider>
@@ -522,10 +500,10 @@
         <state relative-caret-position="120">
           <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
           <folding>
-            <marker date="1516769397270" expanded="true" signature="55:1083" ph=" ... end" />
-            <marker date="1516769397270" expanded="true" signature="152:279" ph="do ... end" />
-            <marker date="1516769397270" expanded="true" signature="886:1072" ph="do ... end" />
-            <marker date="1516769397270" expanded="true" signature="886:1078" ph="do ... end" />
+            <marker date="1516772998145" expanded="true" signature="55:1083" ph=" ... end" />
+            <marker date="1516772998145" expanded="true" signature="152:279" ph="do ... end" />
+            <marker date="1516772998145" expanded="true" signature="886:1072" ph="do ... end" />
+            <marker date="1516772998145" expanded="true" signature="886:1078" ph="do ... end" />
           </folding>
         </state>
       </provider>

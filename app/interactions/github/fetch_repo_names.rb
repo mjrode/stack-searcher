@@ -1,21 +1,15 @@
 class Github::FetchRepoNames < Less::Interaction
-  expects :file_name
-  expects :libraries
-
+  expects :url
   # Returns a list of the full repo names given a file_name and libraries
 
   def run
     @repo_names = []
-    @url = compose_url
+    @url = url
     response = search_code
     @repo_names
   end
 
   private
-
-  def compose_url
-    Github::ComposeUrl.run(file_name: file_name, libraries: libraries)
-  end
 
   def search_code
     response = Common::GithubClient.run(url: @url)
