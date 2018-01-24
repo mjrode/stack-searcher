@@ -10,8 +10,6 @@ class Common::GithubClient < Less::Interaction
 
   def run
     @response = make_request
-    @rate_limit = @response.headers['x-ratelimit-remaining'].to_i
-    puts 'Rate limit remaining: ' + @rate_limit.to_s if @rate_limit < 10
     rate_limit
     response = process_response
   end
@@ -37,7 +35,7 @@ class Common::GithubClient < Less::Interaction
     limit = @response.headers["x-ratelimit-remaining"].to_i
     puts "Requests Remaining: #{limit}"
     if limit < 2
-      reset_time = Time.now - (Time.at(response.headers["x-ratelimit-reset"].to_i))
+      reset_time = (Time.at(@response.headers["x-ratelimit-reset"].to_i)) - Time.now
       puts "Rate limit, sleeping: #{reset_time}"
       sleep reset_time
     end

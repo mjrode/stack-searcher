@@ -6,28 +6,35 @@ class Github::FetchRepoData < Less::Interaction
 
   def run
     @repos = []
-    fetch_repos
-    build_repo_hash(fetch_repos)
+    fetch_and_save_repos
     save_repos
   end
 
   private
 
-  def save_repos
-    @repos.each {|repo| Github::SaveRepos.run(repo_hash: repo)}
+  def fetch_and_save_repos
+    # Slice to respect 256 character limit
+    repo_array.each_slice(5) do |repos|
+      url = compose_url(repos)
+      response = Common::GithubClient.run(url: url)
+      repos = response.parsed_response['items']
+      repo_hash = build_repo_hash(repos)
+    end
   end
 
-  def fetch_repos
-    response = Common::GithubClient.run(url: url)
-    response.parsed_response['items']
+  def compose_url(repos)
+    Github::ComposeUrl.run(repo_names: repos)
+  end
+
+  def save_repos
+    @repos.each {|repo| Github::SaveRepos.run(repo_hash: repo)}
   end
 
   def build_repo_hash(repos)
     repos.each do |repo|
        repo_hash = {}
        repo_hash['external_id'] = repo['id']
-       binding.pry
-       repo_hash['name']        = repo['name']
+       repo_hash['name']        = repo['full_name']
        repo_hash['html_url']    = repo['html_url']
        repo_hash['api_url']     = repo['url']
        repo_hash['score']       = repo['score']
